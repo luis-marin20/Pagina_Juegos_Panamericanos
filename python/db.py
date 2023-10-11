@@ -8,7 +8,7 @@ DB_HOST = "localhost"
 DB_PORT = 3306
 DB_CHARSET = "utf8"
 
-with open('../json/querys.json','r') as querys:
+with open('json/querys.json','r') as querys:
     QUERY_DICT = json.load(querys)
 
 #Coneccion a la base de datos  
@@ -83,4 +83,28 @@ def obtener_ultimo_id():
     connection = get_connection()
     cursor = connection.cursor()
     cursor.execute(QUERY_DICT['obtener_ultimo_id'])
+    return cursor.fetchone()
+
+def obtener_id_comuna(nombre_comuna):
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['obtener_id_comuna'], (nombre_comuna))
+    return cursor.fetchone()
+
+def obtener_id_artesania(nombre_artesania):
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['obtener_id_artesania'], (nombre_artesania))
+    return cursor.fetchone()
+
+def obtener_id_artesano(nombre_artesano):
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['obtener_id_artesano'], (nombre_artesano))
+    return cursor.fetchone()
+
+def obtener_id_region(nombre_region):
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['obtener_id_region'], (nombre_region))
     return cursor.fetchone()

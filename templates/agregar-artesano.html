@@ -3,11 +3,11 @@
 <head>
     <title>Registrar artesano</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../css/agregar-artesano.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/agregar-artesano.css')}}">
 </head>
 <body>
     <h1>Bienvenido nuevo artesano! rellena este breve formulario para poder registrarte</h1>
-    <form id="artesano" class="artesanos" onsubmit="return validadorFormulario()">
+    <form id="artesano" class="artesanos" onsubmit="return validadorFormulario()" action="agregar-artesano" method="post" enctype="multipart/form-data">
         <div id="regiones" class="campo">
             <label for="region">Region de residencia:</label>
             <select id="region" name="region">
@@ -59,7 +59,7 @@
         </div>
         <div id="fotos" class="campo">
             <label id="foto">Foto de su/s artesania/s:</label>
-            <input type="file" id="foto1" class="foto" name="foto1">
+            <input type="file" name="foto1" id="foto1" class="foto">
             <br>
             <input type="file" id="foto2" class="foto" name="foto2" style="display: none;">
             <br>
@@ -94,6 +94,6 @@
         </div>
     </div>
 
-    <script src="../js/agregar-artesano.js"></script>
+    <script src="{{url_for('static',filename='js/agregar-artesano.js')}}"></script>
 </body>
 </html>

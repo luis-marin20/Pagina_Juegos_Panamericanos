@@ -8,5 +8,9 @@
     "obtener_tipo_artesania": "SELECT TA.nombre FROM tipo_artesania TA, artesano_tipo AT WHERE AT.tipo_artesania_id=TA.id AND AT.artesano_id=%s;",
     "agregar_foto": "INSERT INTO foto (ruta_archivo, nombre_archivo, artesano_id) VALUES (%s,%s,%s);",
     "obtener_foto": "SELECT ruta_archivo, nombre_archivo FROM foto WHERE artesano_id=%s;",
-    "obtener_ultimo_id": "SELECT LAST_INSERT_ID();"
+    "obtener_ultimo_id": "SELECT LAST_INSERT_ID();",
+    "obtener_id_artesania": "SELECT id FROM tipo_artesania WHERE nombre=%s;",
+    "obtener_id_comuna": "SELECT id FROM comuna WHERE nombre=%s;",
+    "obtener_id_region": "SELECT id FROM region WHERE nombre=%s;",
+    "obtener_id_artesano": "SELECT id FROM artesano WHERE nombre=%s;"
 }
