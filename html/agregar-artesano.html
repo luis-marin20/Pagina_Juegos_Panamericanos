@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registrar artesano</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/agregar-artesano.css">
+</head>
+<body>
+    <h1>Bienvenido nuevo artesano! rellena este breve formulario para poder registrarte</h1>
+    <form id="artesano" class="artesanos" onsubmit="return validadorFormulario()">
+        <div id="regiones" class="campo">
+            <label for="region">Region de residencia:</label>
+            <select id="region" name="region">
+                <option value="none">---</option>
+                <option value="arica">Region de Arica y Parinacota</option>
+                <option value="tarapaca">Region de Tarapaca</option>
+                <option value="antofagasta">Region de Antofagasta</option>
+                <option value="atacama">Region de Atacama</option>
+                <option value="coquimbo">Region de Coquimbo</option>
+                <option value="valparaiso">Region de Valparaiso</option>
+                <option value="metropolitana">Region Metropolitana</option>
+                <option value="ohiggins">Region de O'Higgins</option>
+                <option value="maule">Region del Maule</option>
+                <option value="nuble">Region de Ñuble</option>
+                <option value="biobio">Region del Biobio</option>
+                <option value="araucania">Region de La Araucania</option>
+                <option value="rios">Region de Los Rios</option>
+                <option value="lagos">Region de Los Lagos</option>
+                <option value="aysen">Region de Aysen</option>
+                <option value="magallanes">Region de Magallanes</option>
+            </select>
+        </div>
+        <div id="error-region" class="error"></div>
+        <div id="comunas" class="campo">
+            <label for="comuna">Comuna de residencia:</label>
+            <select id="comuna" name="comuna">
+                <!-- Opciones se agregarán dinámicamente aquí -->
+            </select>
+        </div>
+        <div id="error-comuna" class="error"></div>
+        <div id="artesanias" class="campo">
+            <label for="artesania">Artesania que realiza (maximo 3):</label>
+            <select id="artesania" name="artesania" multiple>
+                <option value="marlmol">Marmol</option>
+                <option value="madera">Madera</option>
+                <option value="cuero">Cuero</option>
+                <option value="mimbre">Mimbre</option>
+                <option value="telas">Telas</option>
+                <option value="metal">Metal</option>
+                <option value="ceramica">Ceramica</option>
+                <option value="joyas">Joyas</option>
+                <option value="otros">Otro tipo</option>
+            </select>
+        </div>
+        <div id="error-artesanias" class="error"></div>
+        <div id="descripcion-div" class="campo">
+            <label for="descripcion">Descripcion de su/s artesania/s:</label>
+            <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea>
+        </div>
+        <div id="fotos" class="campo">
+            <label id="foto">Foto de su/s artesania/s:</label>
+            <input type="file" id="foto1" class="foto" name="foto1">
+            <br>
+            <input type="file" id="foto2" class="foto" name="foto2" style="display: none;">
+            <br>
+            <input type="file" id="foto3" class="foto" name="foto3" style="display: none;">
+        </div>
+        <div id="error-fotos" class="error"></div>
+        <div class="campo">
+            <label id="nombre">Nombre del artesano:</label>
+            <input type="text" id="nombre-artesano" name="nombre">
+        </div>
+        <div id="error-nombre" class="error"></div>
+        <div class="campo">
+            <label id="email">Email de contacto:</label>
+            <input type="text" id="email-artesano" name="email">
+        </div>
+        <div id="error-email" class="error"></div>
+        <div class="campo">
+            <label id="celular">Numero celular de contacto:</label>
+            <input type="text" id="celular-artesano" name="celular">
+        </div>
+        <div id="error-celular" class="error"></div>
+        <input type="submit" id="registrar-artesano" value="Registrar Artesano">
+        <button class="volver" onclick="redirigir()">Volver</button>
+    </form>
+
+    <div id="modal" class="modals" style="display: none;">
+        <div class="modal-contenido">
+            <span class="close">&times;</span>
+            <p>¿Confirma el registro de este artesano?</p>
+            <button id="confirmar-registro" onclick="enviarFormulario()">Si, confirmo</button>
+            <button id="cerrar-modal" onclick="cerrarModal()">No, quiero volver al formulario</button>
+        </div>
+    </div>
+
+    <script src="../js/agregar-artesano.js"></script>
+</body>
+</html>

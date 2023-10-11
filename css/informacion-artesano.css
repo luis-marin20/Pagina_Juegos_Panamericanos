@@ -1,0 +1,69 @@
+body {
+    background-image: url('../image/portada.jpg'); /* Ruta de la imagen de fondo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Color de fondo de la página */
+    font-family: Arial, sans-serif;
+    /* Otros estilos para el fondo, como el tamaño, posición, color de fondo, etc. */
+}
+
+.contenido {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.7); /* Gris transparente */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 20px; /* Agrega esquinas redondeadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.volver {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.volver:hover {
+    background-color: #555;
+}
+
+.fotos {
+    width: 640px; /* Ancho inicial de la foto */
+    height: 480px;
+    margin-right: 10px; /* Espacio entre las imágenes (ajusta según sea necesario) */
+    transition: width 0.5s; /* Efecto de transición para cambiar el tamaño suavemente */
+    cursor: pointer; /* Cambia el cursor al puntero al pasar el ratón sobre la foto */
+}
+
+.fotos.ampliadas {
+    width: 1280px; /* Nuevo ancho de la foto al hacer clic */
+    height: 1024px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff; 
+}
+
+  /* Estilo para el enlace cuando se pasa el cursor sobre él */
+a:hover {
+    text-decoration: underline; /* Opcional: puedes aplicar un subrayado al pasar el cursor */
+    color: #00FF00
+}
+
+.contenedor-imagen {
+    display: flex; /* Utiliza el modelo de caja flexible para colocar elementos en línea */
+}

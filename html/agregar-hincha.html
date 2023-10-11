@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registro Hincha</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/agregar-hincha.css">
+</head>
+<body>
+    <h1>Llena los siguientes datos para poder registrarte!</h1>
+    <form id="hinchas" class="hincha" onsubmit="return validadorFormulario()">
+        <div id="deporte" class="campo">
+            <label for="deportes">Selecciona su/s deporte/s favorito/s (maximo 3):</label>
+            <select id="deportes" name="deportes" multiple>
+                <option value="clavados">Clavados</option>
+                <option value="natacion">Natacion</option>
+                <option value="natacion-artistica">Natacion artistica</option>
+                <option value="polo-acuatico">Polo acuatico</option>
+                <option value="natacion-en-aguas-abiertas">Natacion en aguas abiertas</option>
+                <option value="maraton">Maraton</option>
+                <option value="marcha">Marcha</option>
+                <option value="atletismo">Atletismo</option>
+                <option value="badminton">Badminton</option>
+                <option value="balonmano">Balonmano</option>
+                <option value="basquetbol">Basquetbol</option>
+                <option value="basquetbol-3x3">Basquetbol 3x3</option>
+                <option value="beisbol">Beisbol</option>
+                <option value="boxeo">Boxeo</option>
+                <option value="bowling">Bowling</option>
+                <option value="breaking">Breaking</option>
+                <option value="canotaje-slalom">Canotaje Slalom</option>
+                <option value="canotaje-velocidad">Canotaje de Velocidad</option>
+                <option value="bmx-freestyle">BMX Freestyle</option>
+                <option value="bmx-racing">BMX Racing</option>
+                <option value="ciclismo-pista">Ciclismo pista</option>
+                <option value="ciclismo-ruta">Ciclismo ruta</option>
+                <option value="adiestramiento-ecuestre">Adiestramiento ecuestre</option>
+                <option value="salto-ecuestre">Salto ecuestre</option>
+                <option value="evento-completo-ecuestre">Evento completo ecuestre</option>
+                <option value="esgrima">Esgrima</option>
+                <option value="escalada-deportiva">Escalada deportiva</option>
+                <option value="esqui-acuatico">Esqui acuatico y Waterboard</option>
+                <option value="futbol">Futbol</option>
+                <option value="gimnasia-artistica-M">Gimnasia artistica Masculina</option>
+                <option value="gimnasia-artistica-F">Gimnasia artistica Femenina</option>
+                <option value="gimnasia-trampolin">Gimnasia trampolin</option>
+                <option value="gimnasia-rítmica">Gimnasia ritmica</option>
+                <option value="golf">Golf</option>
+                <option value="hockey-cesped">Hockey cesped</option>
+                <option value="judo">Judo</option>
+                <option value="karate">Karate</option>
+                <option value="levantamiento-de-pesas">Levantamiento de pesas</option>
+                <option value="lucha">Lucha</option>
+                <option value="patinaje-artistico">Patinaje artistico</option>
+                <option value="skateboarding">Skateboarding</option>
+                <option value="patinaje-velocidad">Patinaje velocidad</option>
+                <option value="pelota-vasca">Pelota vasca</option>
+                <option value="pentatlon-moderno">Pentatlon moderno</option>
+                <option value="racquetball">Racquetball</option>
+                <option value="remo">Remo</option>
+                <option value="rugby">Rugby 7</option>
+                <option value="softbol">Softbol</option>
+                <option value="squash">Squash</option>
+                <option value="surf">Surf</option>
+                <option value="taekwondo">Taekwondo</option>
+                <option value="tenis">Tenis</option>
+                <option value="tenis-de-mesa">Tenis de mesa</option>
+                <option value="tiro">Tiro</option>
+                <option value="tiro-con-arco">Tiro con arco</option>
+                <option value="triatlon">Triatlon</option>
+                <option value="vela">Vela</option>
+                <option value="voleibol">Voleibol</option>
+                <option value="voleibol-playa">Voleibol playa</option>
+            </select>
+        </div>
+        <div id="error-deportes" class="error"></div>
+        <div id="regiones" class="campo">
+            <label for="region">Region de residencia:</label>
+            <select id="region" name="region">
+                <option value="none">---</option>
+                <option value="arica">Region de Arica y Parinacota</option>
+                <option value="tarapaca">Region de Tarapaca</option>
+                <option value="antofagasta">Region de Antofagasta</option>
+                <option value="atacama">Region de Atacama</option>
+                <option value="coquimbo">Region de Coquimbo</option>
+                <option value="valparaiso">Region de Valparaiso</option>
+                <option value="metropolitana">Region Metropolitana</option>
+                <option value="ohiggins">Region de O'Higgins</option>
+                <option value="maule">Region del Maule</option>
+                <option value="nuble">Region de Ñuble</option>
+                <option value="biobio">Region del Biobio</option>
+                <option value="araucania">Region de La Araucania</option>
+                <option value="rios">Region de Los Rios</option>
+                <option value="lagos">Region de Los Lagos</option>
+                <option value="aysen">Region de Aysen</option>
+                <option value="magallanes">Region de Magallanes</option>
+            </select>
+        </div>
+        <div id="error-region" class="error"></div>
+        <div id="comunas" class="campo">
+            <label for="comuna">Comuna de residencia:</label>
+            <select id="comuna" name="comuna">
+                <!-- Opciones se agregarán dinámicamente aquí -->
+            </select>
+        </div>
+        <div id="error-comuna" class="error"></div>
+        <div id="transportes" class="campo">
+            <label for="transporte">Medio de transporte:</label>
+            <select id="transporte" name="transporte">
+                <option value="none">---</option>
+                <option value="particular">Particular</option>
+                <option value="locomocion">Locomocion Publica</option>
+            </select>
+        </div>
+        <div id="error-transporte" class="error"></div>
+        <div id="Nombre">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+        </div>
+        <div id="error-nombre" class="error"></div>
+        <div id="mail">
+            <label for="email">Email de contacto:</label>
+            <input type="text" id="email" name="email">
+        </div>
+        <div id="error-email" class="error"></div>
+        <div id="telefono" class="campo">
+            <label for="celular">Numero celular de contacto:</label>
+            <input type="text" id="celular" name="celular">
+        </div>
+        <div id="error-celular" class="error"></div>
+        <div id="comits" class="campo">
+            <label for="comentarios">Comentarios adicionales (opcional):</label>
+            <textarea id="comentarios" name="comentarios" rows="4" cols="50"></textarea>
+        </div>
+        <div id="error-comentarios" class="error"></div>
+        
+        <div class="marco">    
+            <input type="submit" id="registrar-hincha" value="Registrar Hincha">
+            <button class="volver" onclick="redirigir()">Volver</button>
+        </div>
+    </form>     
+    
+    <div id="modal" class="modals" style="display: none;">
+        <div class="modal-contenido">
+            <span class="close">&times;</span>
+            <p>¿Confirma el registro de este hincha?</p>
+            <button id="confirmar-registro" onclick="enviarFormulario()">Si, confirmo</button>
+            <button id="cerrar-modal" onclick="cerrarModal()">No, quiero volver al formulario</button>
+        </div>
+    </div>
+
+    <script src="../js/agregar-hincha.js"></script>
+</body>
+</html>
