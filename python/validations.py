@@ -43,6 +43,6 @@ def fotoSegura(foto):
 def procesarFoto(foto):
     new_foto = fotoSegura(foto)
     foto.save(os.path.join(app.config["UPLOAD_FOLDER"], new_foto))
-    ruta = os.path.join(app.config["UPLOAD_FOLDER"], new_foto)
+    ruta = os.path.join(app.config["UPLOAD_FOLDER"], new_foto) 
 
     return (ruta, new_foto)
