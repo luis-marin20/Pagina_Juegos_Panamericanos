@@ -59,5 +59,24 @@ def agregar_artesano():
 #             db.agregar_foto(ruta, new_foto, db.obtener_id_artesano(new_foto))
 #     return redirect(url_for("index"))
 
+@app.route("/ver-artesanos", methods=["GET"])
+def ver_artesanos():
+    artesanos=db.listado_artesanos_foto()
+    paginas = {}
+    if len(artesanos) > 5:
+        pag=1
+        for i in range(0, len(artesanos), 5):
+            paginas[str(pag)] = artesanos[i:i+5]
+            pag+=1
+        return render_template("ver-artesanos.html", paginas=paginas)
+    else:
+        paginas['1'] = artesanos
+        return render_template("ver-artesanos.html", paginas=paginas)
+
+@app.route("/informacion-artesanos/<artesano_id>", methods=["GET"])
+def informacion_artesanos(artesano_id):
+    informacion = db.info_artesano(artesano_id)
+    return render_template("informacion-artesano.html", nombre=informacion[0], region=informacion[1], comuna=informacion[2], artesania=informacion[3], foto=informacion[4], email=informacion[5], celular=informacion[6])
+
 if __name__ == "__main__":
     app.run(debug=True)

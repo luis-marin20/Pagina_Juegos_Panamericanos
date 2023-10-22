@@ -3,80 +3,23 @@
 <head>
     <title>Informacion Artesano</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../css/informacion-artesano.css">
-    <style>
-        .contenido{
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/static/css/informacion-artesano.css">
 </head>
 <body>
-    <div id="juan" class="contenido">
-        <h1>Informacion Artesano Juan Perez</h1>
-        <p>Region de residencia: Metropolitana</p>
-        <p>Comuna de residencia: Cerro Navia</p>
-        <p>Tipo de artesanias: Madera</p>
+    {}
+    <div id="{{nombre}}" class="contenido">
+        <h1>Informacion Artesano {{nombre}}</h1>
+        <p>Region de residencia: {{region}}</p>
+        <p>Comuna de residencia: {{comuna}}</p>
+        <p>Tipo de artesanias: {{artesania}}</p>
         <div class="contenedor-imagen">
             <label class="foto1">Fotos:</label>
-            <img class="fotos" src="../image/madera.jpg" alt="Madera" width="120" height="120" onclick="cambiarTamaño(this)">
+            <img class="fotos" src="../{{foto}}" alt="{{artesania}}" width="120" height="120" onclick="cambiarTamaño(this)">
         </div>
-        <p>Email de contacto: juan.perez@gmail.com</p>
-        <p>Telefono: +56987654321</p>
+        <p>Email de contacto: {{email}}</p>
+        <p>Telefono: {{celular}}</p>
         <button class="volver" onclick="redirigir()">Volver</button>
     </div>
-    <div id="luis" class="contenido">
-        <h1>Informacion Artesano Luis Marin</h1>
-        <p>Region de residencia: Metropolitana</p>
-        <p>Comuna de residencia: Til Til</p>
-        <p>Tipo de artesanias: Madera, Mimbre</p>
-        <div class="contenedor-imagen">
-            <label class="foto1">Fotos:</label>
-            <img class="fotos" src="../image/mimbre.jpg" alt="Mimbre" width="120" height="120" onclick="cambiarTamaño(this)">
-            <img class="fotos" src="../image/madea2.jpg" alt="Madera" width="120" height="120" onclick="cambiarTamaño(this)">
-        </div>
-        <p>Email de contacto: luis.marin@gmail.com</p>
-        <p>Telefono: +56982184672</p>
-        <button class="volver" onclick="redirigir()">Volver</button>
-    </div>
-    <div id="anita" class="contenido">
-        <h1>Informacion Artesana Anita la Huerfanita</h1>
-        <p>Region de residencia: Metropolitana</p>
-        <p>Comuna de residencia: La Florida</p>
-        <p>Tipo de artesanias: Cuero</p>
-        <div class="contenedor-imagen">
-            <label class="foto1">Fotos:</label>
-            <img class="fotos" src="../image/cuero.jpg" alt="Cuero" width="120" height="120" onclick="cambiarTamaño(this)">
-        </div>
-        <p>Email de contacto: ani.huerfana@artesanias.class</p>
-        <p>Telefono: +56998765432</p>
-        <button class="volver" onclick="redirigir()">Volver</button>
-    </div>
-    <div id="bryan" class="contenido">
-        <h1>Informacion Artesano Bryan Silva</h1>
-        <p>Region de residencia: Metropolitana</p>
-        <p>Comuna de residencia: Colina</p>
-        <p>Tipo de artesanias: Marmol</p>
-        <div class="contenedor-imagen">
-            <label class="foto1">Fotos:</label>
-            <img class="fotos" src="../image/marmol.jpg" alt="marmol" width="120" height="120" onclick="cambiarTamaño(this)">
-        </div>
-        <p>Email de contacto: bryn.silva@outlook.com</p>
-        <p>Telefono: +56912345678</p>
-        <button class="volver" onclick="redirigir()">Volver</button>
-    </div>
-    <div id="armando" class="contenido">
-        <h1>Informacion Artesano Armando Casas</h1>
-        <p>Region de residencia: Metropolitana</p>
-        <p>Comuna de residencia: Puente Alto</p>
-        <p>Tipo de artesanias: Otro tipo</p>
-        <div class="contenedor-imagen">
-            <label class="foto1">Fotos:</label>
-            <img class="fotos" src="../image/artesania.jpg" alt="artesania" width="120" height="120" onclick="cambiarTamaño(this)">
-        </div>
-        <p>Email de contacto: armando.casas@contacto.cl</p>
-        <p>Telefono: +56987654321</p>
-        <button class="volver" onclick="redirigir()">Volver</button>
-    </div>
-    <script src="../js/informacion-artesano.js"></script>
+    <script src="/static/js/informacion-artesano.js"></script>
 </body>
 </html>

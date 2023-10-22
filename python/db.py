@@ -37,6 +37,12 @@ def listado_artesanos():
     cursor.execute(QUERY_DICT['listado_artesanos'])
     return cursor.fetchall()
 
+def listado_artesanos_foto():
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['listado_artesanos_foto'])
+    return cursor.fetchall()
+
 def listado_artesanos_primeros_5():
     connection = get_connection()
     cursor = connection.cursor()
@@ -53,6 +59,12 @@ def listado_artesanos_siguientes_5_comuna():
     connection = get_connection()
     cursor = connection.cursor()
     cursor.execute(QUERY_DICT['listado_artesanos_siguientes_5_comuna'])
+    return cursor.fetchall()
+
+def listado_artesanos_primeros_5_foto():
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['listado_artesanos_primeros_5_foto'])
     return cursor.fetchall()
 
 def agregar_artesano_tipo(artesano_id, tipo_artesania_id):
@@ -108,3 +120,21 @@ def obtener_id_region(nombre_region):
     cursor = connection.cursor()
     cursor.execute(QUERY_DICT['obtener_id_region'], (nombre_region))
     return cursor.fetchone()
+
+def info_artesano(artesano_id):
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['informacion_artesano'], (artesano_id))
+    return cursor.fetchone()
+
+def listar_regiones():
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['listar_regiones'])
+    return cursor.fetchall()
+
+def listar_comunas():
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['listar_comunas'])
+    return cursor.fetchall()
