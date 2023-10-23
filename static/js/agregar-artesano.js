@@ -39,7 +39,7 @@ actualizarComunas();
 
 //Vemos los hipervinculos
 const redirigir = () => {
-    window.location.href = "{{ url_for('/python/app.py') }}";
+    window.location.href = "/";
 }
 
 //Comenzamos a ver los validadores de la pagina
@@ -171,7 +171,12 @@ const validadorFormulario = () => {
     else {
         errorFoto.innerHTML = "";
     }
-    if(nombre.value.length < 3) {
+    const nombreChek= /^[A-Za-záéíóúÁÉÍÓÚñÑüÜ\'-]+ [A-Za-záéíóúÁÉÍÓÚñÑüÜ\'-]+$/;
+    if(!nombreChek.test(nombre.value)) {
+        errorNombre.innerText = "Debes ingresar tu nombre en formato Nombre Apellido";
+        correcto = 0;
+    }
+    else if(nombre.value.length < 3) {
         errorNombre.innerText = "Debes ingresar al menos 3 caracteres";
         correcto = 0;
     }
@@ -186,7 +191,7 @@ const validadorFormulario = () => {
     else {
         errorEmail.innerHTML = "";
     }
-    const celularChek= /^\+[0-9]{2,10}$/;
+    const celularChek= /^\+569\d{8}$/;
     if(!celularChek.test(celular.value)) {
         errorCelular.innerText = "Debes ingresar un número de celular válido";
         correcto = 0;

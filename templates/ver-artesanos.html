@@ -7,7 +7,6 @@
 </head>
 <body>
     <h1>Estos son los artesanos registrados en la pagina</h1>
-    {% for pagina in paginas %}
     <table class="tabla">
         <thead>
             <tr>
@@ -19,30 +18,45 @@
             </tr>
         </thead>
         <tbody>
-            {% for nombre, celular, comuna, artesania, foto, id in paginas[pagina] %}
+            {% for artesano in elementos%}
             <tr>
-                <td id="{{id}}">
-                    <a href="{{url_for('informacion_artesanos', artesano_id=id)}}">{{nombre}}<a>
+                <td id="{{artesano[5]}}">
+                    <a href="{{url_for('informacion_artesanos', artesano_id=artesano[5])}}">{{artesano[0]}}</a>
                 </td>
                 <td>
-                    <a href="{{url_for('informacion_artesanos', artesano_id=id)}}">{{celular}}</a>
+                    <a href="{{url_for('informacion_artesanos', artesano_id=artesano[5])}}">{{artesano[1]}}</a>
                 </td>
                 <td>
-                    <a href="{{url_for('informacion_artesanos', artesano_id=id)}}">{{comuna}}</a>
+                    <a href="{{url_for('informacion_artesanos', artesano_id=artesano[5])}}">{{artesano[2]}}</a>
                 </td>
                 <td>
-                    <a href="{{url_for('informacion_artesanos', artesano_id=id)}}">{{artesania}}</a>
+                    <a href="{{url_for('informacion_artesanos', artesano_id=artesano[5])}}">{{artesano[3]}}</a>
                 </td>
                 <td>
-                    <a href="{{url_for('informacion_artesanos', artesano_id=id)}}">
-                    <img src="{{foto}}" alt="{{artesania}}" width="120" height="120">
+                    {% for foto in artesano[4] %}
+                    <a href="{{url_for('informacion_artesanos', artesano_id=artesano[5])}}">
+                    <img src="{{foto[0]}}" alt="artesania" width="120" height="120">
                     </a>
+                    {% endfor %}
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    {% endfor %}
+
+    <div class="paginacion">
+        {% if pagina_actual > 1 %}
+            <a href="?pagina={{ pagina_actual - 1 }}">Anterior</a>
+        {% endif %}
+        
+        {% for pagina in range(1, num_paginas + 1) %}
+            <a href="?pagina={{ pagina }}">{{ pagina }}</a>
+        {% endfor %}
+        
+        {% if pagina_actual < num_paginas %}
+            <a href="?pagina={{ pagina_actual + 1 }}">Siguiente</a>
+        {% endif %}
+    </div>
 
     <button class="volver" onclick="redirigir()">Volver</button>
     

@@ -77,7 +77,7 @@ def obtener_tipo_artesania(artesano_id):
     connection = get_connection()
     cursor = connection.cursor()
     cursor.execute(QUERY_DICT['obtener_tipo_artesania'], (artesano_id))
-    return cursor.fetchone()
+    return cursor.fetchall()
 
 def agregar_foto(ruta_archivo, nombre_archivo, artesano_id):
     connection = get_connection()
@@ -133,8 +133,8 @@ def listar_regiones():
     cursor.execute(QUERY_DICT['listar_regiones'])
     return cursor.fetchall()
 
-def listar_comunas():
+def listar_comunas(region_id):
     connection = get_connection()
     cursor = connection.cursor()
-    cursor.execute(QUERY_DICT['listar_comunas'])
+    cursor.execute(QUERY_DICT['listar_comunas'], (region_id))
     return cursor.fetchall()

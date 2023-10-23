@@ -7,14 +7,16 @@
 </head>
 <body>
     {}
-    <div id="{{nombre}}" class="contenido">
+    <div id="{{nombre_id}}" class="contenido">
         <h1>Informacion Artesano {{nombre}}</h1>
         <p>Region de residencia: {{region}}</p>
         <p>Comuna de residencia: {{comuna}}</p>
         <p>Tipo de artesanias: {{artesania}}</p>
         <div class="contenedor-imagen">
             <label class="foto1">Fotos:</label>
-            <img class="fotos" src="../{{foto}}" alt="{{artesania}}" width="120" height="120" onclick="cambiarTamaño(this)">
+            {% for fot in foto %}
+            <img class="fotos" src="../{{fot[0]}}" alt="artesania" width="120" height="120" onclick="cambiarTamaño(this)">
+            {% endfor %}
         </div>
         <p>Email de contacto: {{email}}</p>
         <p>Telefono: {{celular}}</p>

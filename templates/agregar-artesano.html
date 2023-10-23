@@ -3,7 +3,7 @@
 <head>
     <title>Registrar artesano</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/agregar-artesano.css')}}">
+    <link rel="stylesheet" type="text/css" href="/static/css/agregar-artesano.css">
 </head>
 <body>
     <h1>Bienvenido nuevo artesano! rellena este breve formulario para poder registrarte</h1>
@@ -12,22 +12,22 @@
             <label for="region">Region de residencia:</label>
             <select id="region" name="region">
                 <option value="none">---</option>
-                <option value="arica">Region de Arica y Parinacota</option>
-                <option value="tarapaca">Region de Tarapaca</option>
-                <option value="antofagasta">Region de Antofagasta</option>
-                <option value="atacama">Region de Atacama</option>
-                <option value="coquimbo">Region de Coquimbo</option>
-                <option value="valparaiso">Region de Valparaiso</option>
-                <option value="metropolitana">Region Metropolitana</option>
-                <option value="ohiggins">Region de O'Higgins</option>
-                <option value="maule">Region del Maule</option>
-                <option value="nuble">Region de Ñuble</option>
-                <option value="biobio">Region del Biobio</option>
-                <option value="araucania">Region de La Araucania</option>
-                <option value="rios">Region de Los Rios</option>
-                <option value="lagos">Region de Los Lagos</option>
-                <option value="aysen">Region de Aysen</option>
-                <option value="magallanes">Region de Magallanes</option>
+                <option value="arica">Región Arica y Parinacota</option>
+                <option value="tarapaca">Región de Tarapaca</option>
+                <option value="antofagasta">Región de Antofagasta</option>
+                <option value="atacama">Región de Atacama</option>
+                <option value="coquimbo">Región de Coquimbo</option>
+                <option value="valparaiso">Región de Valparaíso</option>
+                <option value="metropolitana">Región Metropolitana de Santiago </option>
+                <option value="ohiggins">Región del Libertador Bernardo Ohiggins</option>
+                <option value="maule">Región del Maule</option>
+                <option value="nuble">Región del Ñuble</option>
+                <option value="biobio">Región del Biobío</option>
+                <option value="araucania">Región de La Araucanía</option>
+                <option value="rios">Región de Los Ríos</option>
+                <option value="lagos">Región de Los Lagos</option>
+                <option value="aysen">Región Aisén del General Carlos Ibáñez del Campo</option>
+                <option value="magallanes">Región de Magallanes y la Antártica Chilena</option>
             </select>
         </div>
         <div id="error-region" class="error"></div>
@@ -41,7 +41,7 @@
         <div id="artesanias" class="campo">
             <label for="artesania">Artesania que realiza (maximo 3):</label>
             <select id="artesania" name="artesania" multiple>
-                <option value="marlmol">Marmol</option>
+                <option value="marmol">Marmol</option>
                 <option value="madera">Madera</option>
                 <option value="cuero">Cuero</option>
                 <option value="mimbre">Mimbre</option>
@@ -67,7 +67,7 @@
         </div>
         <div id="error-fotos" class="error"></div>
         <div class="campo">
-            <label id="nombre">Nombre del artesano:</label>
+            <label id="nombre">Nombre del artesano(Nombre Apellido):</label>
             <input type="text" id="nombre-artesano" name="nombre">
         </div>
         <div id="error-nombre" class="error"></div>
@@ -77,7 +77,7 @@
         </div>
         <div id="error-email" class="error"></div>
         <div class="campo">
-            <label id="celular">Numero celular de contacto:</label>
+            <label id="celular">Numero celular de contacto(Ej: +56912345678):</label>
             <input type="text" id="celular-artesano" name="celular">
         </div>
         <div id="error-celular" class="error"></div>
@@ -94,6 +94,6 @@
         </div>
     </div>
 
-    <script src="{{url_for('static',filename='js/agregar-artesano.js')}}"></script>
+    <script src="/static/js/agregar-artesano.js"></script>
 </body>
 </html>

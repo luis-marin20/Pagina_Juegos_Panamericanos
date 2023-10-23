@@ -39,7 +39,7 @@ actualizarComunas();
 
 //Vemos los hipervinculos
 const redirigir = () => {
-    window.location.href = "index.html";
+    window.location.href = "/";
 }
 
 //Comenzamos a ver los validadores de la pagina
