@@ -4,4 +4,6 @@ Consideraciones para la correcion:
 
 1. Las paginas no son responsivas, fue realizada en un escritorio de resolucion 1920x1080, para resoluciones mas pequeñas hay que achicar el zoom de la pagina.
 2. Para la seleccion multiple se debe hacer por defecto, es decir, "CTRL + click" para seleccionar mas de una opccion.
-3. Para "Ver hinchas" y "Ver artesanos" el boton "Volver" se encuentra en la parte superior izquierda de la pagina ya que no pude lograr que se posicionara abajo, de todas formas no se ve mal esteticamente.
+3. Para "Ver hinchas" y "Ver artesanos" el boton "Volver" y los botones de empaginado se encuentra en la parte superior izquierda de la pagina ya que no pude lograr que se posicionara abajo, de todas formas no se ve mal esteticamente.
+4. Para la seleccion de comunas puede que haya algunas que no esten en la base de datos dada, las menos coonocidas.
+5. Para la seleccion de comunas puede haber problemas con las tildes, por lo que para evitar problemas se recomienda elegir una comuna que no lleve tilde.
