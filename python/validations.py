@@ -7,7 +7,7 @@ import re
 from werkzeug.utils import secure_filename
 
 def validarFormulario(region, comuna, artesania, descripcion, fotos, nombre, email, celular):
-    if validarFotos(fotos) and validarEmail(email) and validarCelular(celular) and validarNombre(nombre) and validarTexto(descripcion) and region is not None and comuna is not None and artesania is not None:
+    if validarFotos(fotos) and validarEmail(email) and validarCelular(celular) and validarNombre(nombre) and validarTexto(descripcion) and region is not None and comuna is not None and artesania is not None and len(artesania)>=1 and len(artesania)<=3:
         return True
     else:
         return False
@@ -46,7 +46,7 @@ def validarCelular(celular):
 
 def validarNombre(nombre):
     nombre_valido = r'^[A-Za-záéíóúÁÉÍÓÚñÑüÜ\'-]+ [A-Za-záéíóúÁÉÍÓÚñÑüÜ\'-]+$'
-    if re.match(nombre_valido, nombre) and validarTexto(nombre):
+    if re.match(nombre_valido, nombre) and validarTexto(nombre) and len(nombre) <= 80 and len(nombre) >= 3:
         return True
     else:
         return False
