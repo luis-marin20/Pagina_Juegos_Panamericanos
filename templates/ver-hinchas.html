@@ -18,93 +18,41 @@
             </tr>
         </thead>
         <tbody>
+            {% for hincha in elementos%}
             <tr>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='juan')}}">Juan Perez</a>
+                <td id="{{hincha[0]}}">
+                    <a href="{{url_for('informacion_hinchas', name=hincha[0])}}">{{hincha[0]}}</a>
                 </td>
                 <td>
-                    <a href="{{url_for('informacion_hinchas', name='juan')}}">Cerro Navia</a>
+                    <a href="{{url_for('informacion_hinchas', name=hincha[0])}}">{{hincha[1]}}</a>
                 </td>
                 <td>
-                    <a href="{{url_for('informacion_hinchas', name='juan')}}">Futbol, Natacion, Voleibol playa</a>
+                    <a href="{{url_for('informacion_hinchas', name=hincha[0])}}">{{hincha[2]}}</a>
                 </td>
                 <td>
-                    <a href="{{url_for('informacion_hinchas', name='juan')}}">Particular</a>
+                    <a href="{{url_for('informacion_hinchas', name=hincha[0])}}">{{hincha[3]}}</a>
                 </td>
                 <td>
-                    <a href="{{url_for('informacion_hinchas', name='juan')}}">+56987654321</a>
+                    <a href="{{url_for('informacion_hinchas', name=hincha[0])}}">{{hincha[4]}}</a>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='luis')}}">Luis Marin</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='luis')}}">Til Til</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='luis')}}">Tenis, Tenis de mesa, Futbol</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='luis')}}">Transpote publico</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='luis')}}">+56982184672</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='anita')}}">Anita la Huerfanita</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='anita')}}">La Florida</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='anita')}}">Clavados, Gimnasia ritmica, Atletismo</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='anita')}}">Transpote publico</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='anita')}}">+56998765432</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='bryan')}}">Bryan Silva</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='bryan')}}">Colina</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='bryan')}}">Polo acuatico, Futbol, Tenis</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='bryan')}}">Transpote publico</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='bryan')}}">+56912345678</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='armando')}}">Armando Casas</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='armando')}}">Puente Alto</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='armando')}}">Balonmano</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='armando')}}">Particular</a>
-                </td>
-                <td>
-                    <a href="{{url_for('informacion_hinchas', name='armando')}}">+56987654321</a>
-                </td>
-            </tr>
+            {% endfor %}
         </tbody>
-    </table> 
+    </table>
+
+    <div class="paginacion">
+        {% if pagina_actual > 1 %}
+            <a href="?pagina={{ pagina_actual - 1 }}">Anterior</a>
+        {% endif %}
+        
+        {% for pagina in range(1, num_paginas + 1) %}
+            <a href="?pagina={{ pagina }}">{{ pagina }}</a>
+        {% endfor %}
+        
+        {% if pagina_actual < num_paginas %}
+            <a href="?pagina={{ pagina_actual + 1 }}">Siguiente</a>
+        {% endif %}
+    </div>
 
     <button class="volver" onclick="redirigir()">Volver</button>
 

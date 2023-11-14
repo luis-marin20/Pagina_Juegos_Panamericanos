@@ -67,3 +67,6 @@ def procesarFoto(foto):
     foto.save(ruta)
 
     return (ruta, new_foto)
+
+def validarFormularioHincha(deportes, region, comuna, transporte, nombre, email, celular, comentarios):
+    return True

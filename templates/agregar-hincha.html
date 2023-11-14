@@ -7,69 +7,13 @@
 </head>
 <body>
     <h1>Llena los siguientes datos para poder registrarte!</h1>
-    <form id="hinchas" class="hincha" onsubmit="return validadorFormulario()">
+    <form id="hinchas" class="hincha" onsubmit="return validadorFormulario()" action="agregar-hincha" method="post" enctype="multipart/form-data">
         <div id="deporte" class="campo">
             <label for="deportes">Selecciona su/s deporte/s favorito/s (maximo 3):</label>
             <select id="deportes" name="deportes" multiple>
-                <option value="clavados">Clavados</option>
-                <option value="natacion">Natacion</option>
-                <option value="natacion-artistica">Natacion artistica</option>
-                <option value="polo-acuatico">Polo acuatico</option>
-                <option value="natacion-en-aguas-abiertas">Natacion en aguas abiertas</option>
-                <option value="maraton">Maraton</option>
-                <option value="marcha">Marcha</option>
-                <option value="atletismo">Atletismo</option>
-                <option value="badminton">Badminton</option>
-                <option value="balonmano">Balonmano</option>
-                <option value="basquetbol">Basquetbol</option>
-                <option value="basquetbol-3x3">Basquetbol 3x3</option>
-                <option value="beisbol">Beisbol</option>
-                <option value="boxeo">Boxeo</option>
-                <option value="bowling">Bowling</option>
-                <option value="breaking">Breaking</option>
-                <option value="canotaje-slalom">Canotaje Slalom</option>
-                <option value="canotaje-velocidad">Canotaje de Velocidad</option>
-                <option value="bmx-freestyle">BMX Freestyle</option>
-                <option value="bmx-racing">BMX Racing</option>
-                <option value="ciclismo-pista">Ciclismo pista</option>
-                <option value="ciclismo-ruta">Ciclismo ruta</option>
-                <option value="adiestramiento-ecuestre">Adiestramiento ecuestre</option>
-                <option value="salto-ecuestre">Salto ecuestre</option>
-                <option value="evento-completo-ecuestre">Evento completo ecuestre</option>
-                <option value="esgrima">Esgrima</option>
-                <option value="escalada-deportiva">Escalada deportiva</option>
-                <option value="esqui-acuatico">Esqui acuatico y Waterboard</option>
-                <option value="futbol">Futbol</option>
-                <option value="gimnasia-artistica-M">Gimnasia artistica Masculina</option>
-                <option value="gimnasia-artistica-F">Gimnasia artistica Femenina</option>
-                <option value="gimnasia-trampolin">Gimnasia trampolin</option>
-                <option value="gimnasia-rítmica">Gimnasia ritmica</option>
-                <option value="golf">Golf</option>
-                <option value="hockey-cesped">Hockey cesped</option>
-                <option value="judo">Judo</option>
-                <option value="karate">Karate</option>
-                <option value="levantamiento-de-pesas">Levantamiento de pesas</option>
-                <option value="lucha">Lucha</option>
-                <option value="patinaje-artistico">Patinaje artistico</option>
-                <option value="skateboarding">Skateboarding</option>
-                <option value="patinaje-velocidad">Patinaje velocidad</option>
-                <option value="pelota-vasca">Pelota vasca</option>
-                <option value="pentatlon-moderno">Pentatlon moderno</option>
-                <option value="racquetball">Racquetball</option>
-                <option value="remo">Remo</option>
-                <option value="rugby">Rugby 7</option>
-                <option value="softbol">Softbol</option>
-                <option value="squash">Squash</option>
-                <option value="surf">Surf</option>
-                <option value="taekwondo">Taekwondo</option>
-                <option value="tenis">Tenis</option>
-                <option value="tenis-de-mesa">Tenis de mesa</option>
-                <option value="tiro">Tiro</option>
-                <option value="tiro-con-arco">Tiro con arco</option>
-                <option value="triatlon">Triatlon</option>
-                <option value="vela">Vela</option>
-                <option value="voleibol">Voleibol</option>
-                <option value="voleibol-playa">Voleibol playa</option>
+                {% for deporte in deportes %}
+                <option value="{{deporte[0]}}">{{deporte[0]}}</option>
+                {% endfor %}
             </select>
         </div>
         <div id="error-deportes" class="error"></div>
@@ -77,7 +21,10 @@
             <label for="region">Region de residencia:</label>
             <select id="region" name="region">
                 <option value="none">---</option>
-                <option value="arica">Region de Arica y Parinacota</option>
+                {% for region in regiones %}
+                <option value="{{region[0]}}">{{region[0]}}</option>
+                {% endfor %}
+                <!-- <option value="arica">Region de Arica y Parinacota</option>
                 <option value="tarapaca">Region de Tarapaca</option>
                 <option value="antofagasta">Region de Antofagasta</option>
                 <option value="atacama">Region de Atacama</option>
@@ -92,7 +39,7 @@
                 <option value="rios">Region de Los Rios</option>
                 <option value="lagos">Region de Los Lagos</option>
                 <option value="aysen">Region de Aysen</option>
-                <option value="magallanes">Region de Magallanes</option>
+                <option value="magallanes">Region de Magallanes</option> -->
             </select>
         </div>
         <div id="error-region" class="error"></div>
@@ -100,6 +47,7 @@
             <label for="comuna">Comuna de residencia:</label>
             <select id="comuna" name="comuna">
                 <!-- Opciones se agregarán dinámicamente aquí -->
+                <option value="vacio">---</option>
             </select>
         </div>
         <div id="error-comuna" class="error"></div>
@@ -107,8 +55,8 @@
             <label for="transporte">Medio de transporte:</label>
             <select id="transporte" name="transporte">
                 <option value="none">---</option>
-                <option value="particular">Particular</option>
-                <option value="locomocion">Locomocion Publica</option>
+                <option value="Particular">Particular</option>
+                <option value="Locomocion Publica">Locomocion Publica</option>
             </select>
         </div>
         <div id="error-transporte" class="error"></div>
@@ -123,7 +71,7 @@
         </div>
         <div id="error-email" class="error"></div>
         <div id="telefono" class="campo">
-            <label for="celular">Numero celular de contacto:</label>
+            <label for="celular">Numero celular de contacto(Ej: +56912345678):</label>
             <input type="text" id="celular" name="celular">
         </div>
         <div id="error-celular" class="error"></div>

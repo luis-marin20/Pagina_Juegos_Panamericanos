@@ -138,3 +138,57 @@ def listar_comunas(region_id):
     cursor = connection.cursor()
     cursor.execute(QUERY_DICT['listar_comunas'], (region_id))
     return cursor.fetchall()
+
+def agregar_hincha(comuna_id, modo_transporte, nombre, email, celular, comentarios):
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['agregar_hincha'], (comuna_id, modo_transporte, nombre, email, celular, comentarios))
+    connection.commit()
+
+def listado_hinchas():
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['listado_hinchas'])
+    return cursor.fetchall()
+
+def agregar_hincha_deporte(hincha_id, deporte_id):
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['agregar_hincha_deporte'], (hincha_id, deporte_id))
+    connection.commit()
+
+def obtener_id_deporte(nombre_deporte):
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['obtener_id_deporte'], (nombre_deporte))
+    return cursor.fetchone()
+
+def obtener_id_hincha(nombre_hincha):
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['obtener_id_hincha'], (nombre_hincha))
+    return cursor.fetchone()
+
+def obtener_deportes(hincha_id):
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['obtener_deportes'], (hincha_id))
+    return cursor.fetchall()
+
+def informacion_hinchas():
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['informacion_hinchas'])
+    return cursor.fetchall()
+
+def info_hincha(hincha_id):
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['info_hincha'], (hincha_id))
+    return cursor.fetchone()
+
+def listar_deportes():
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['listar_deportes'])
+    return cursor.fetchall()

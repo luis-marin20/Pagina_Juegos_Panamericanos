@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for, session, abort
+from flask import Flask, request, render_template, redirect, url_for, session, abort, jsonify
 import python.db as db
 import os
 import python.validations as val
@@ -15,27 +15,56 @@ def index():
 
 @app.route("/ver-hinchas", methods=["GET"])
 def ver_hinchas():
-    return render_template("ver-hinchas.html")
+    hin=[[nombre, region, comuna, transporte, email, celular] for nombre, region, comuna, transporte, email, celular in db.informacion_hinchas()]
+    hinchas = []
+    for hincha in hin:
+        deporte = db.obtener_deportes(db.obtener_id_hincha(hincha[0]))
+        deporte = ', '.join([''.join(map(str, tupla)) for tupla in deporte])
+        hinchas.append([hincha[0], hincha[2], deporte, hincha[3], hincha[5]])
+    elementos_por_pagina = 5
+    pagina = request.args.get('pagina', 1, type=int)
 
-@app.route("/agregar-hincha", methods=["GET"])
+    inicio = (pagina - 1) * elementos_por_pagina
+    fin = inicio + elementos_por_pagina
+
+    elementos_pagina = hinchas[inicio:fin]
+
+    total_paginas = (len(hinchas)+elementos_por_pagina-1)//elementos_por_pagina
+
+    return render_template("ver-hinchas.html", elementos=elementos_pagina, num_paginas=total_paginas, pagina_actual=pagina)
+
+@app.route("/agregar-hincha", methods=["GET", "POST"])
 def agregar_hincha():
-    return render_template("agregar-hincha.html")
+    if request.method == "GET":
+        deportes = db.listar_deportes()
+        regiones = db.listar_regiones()
+        return render_template("agregar-hincha.html", deportes=deportes, regiones=regiones)
+    elif request.method == "POST":
+        deportes = request.form.getlist("deportes")
+        region = request.form["region"]
+        comuna = request.form["comuna"]
+        transporte = request.form["transporte"]
+        nombre = request.form["nombre"]
+        email = request.form["email"]
+        celular = request.form["celular"]
+        comentarios = request.form["comentarios"]
+
+        if val.validarFormularioHincha(deportes, region, comuna, transporte, nombre, email, celular, comentarios):
+            db.agregar_hincha(db.obtener_id_comuna(comuna), transporte, nombre, email, celular, comentarios)
+
+            for dep in deportes:
+                db.agregar_hincha_deporte(db.obtener_id_hincha(nombre),db.obtener_id_deporte(dep))
+
+            return redirect(url_for("index"))
+        else:
+            abort(400, "Debes completar todos los campos correctamente.")
 
 @app.route("/informacion-hinchas/<name>", methods=["GET"])
 def informacion_hinchas(name):
-    hinchas = {"juan": ["Juan Perez","Futbol, Natacion, Voleibol playa", "Metropolitana", "Cerro Navia", "Particular", "juan.perez@gmail.com", "+56987654321"],
-               "luis": ["Luis Marin", "Tenis, Tenis de mesa, Futbol", "Metropolitana", "Til Til", "Transporte publico", "luis.marin@gmail.com", "+56982184672"],
-               "anita": ["Anita la Huerfanita", "Clavados, Gimnasia ritmica, Atletismo", "Metropolitana", "La Florida", "Transporte publico", "ani.huerfana@artesanias.class", "+56998765432"],
-               "bryan": ["Bryan Silva", "Polo acuatico, Futbol, Tenis", "Metropolitana", "Colina", "Transporte publico", "bryn.silva@outlook.com", "+56912345678"],
-               "armando": ["Armando Casas", "Balonmano", "Metropolitana", "Puente Alto", "Particular", "armando.casas@contacto.cl", "+56987654321"]}
-    nombre = hinchas[name][0]
-    deportes = hinchas[name][1]
-    region = hinchas[name][2]
-    comuna = hinchas[name][3]
-    transporte = hinchas[name][4]
-    email = hinchas[name][5]
-    celular = hinchas[name][6]
-    return render_template("informacion-hincha.html", nombre_id=name, nombre=nombre, deportes=deportes, region=region, comuna=comuna, transporte=transporte, email=email, celular=celular)
+    informacion = db.info_hincha(db.obtener_id_hincha(name))
+    deporte = db.obtener_deportes(db.obtener_id_hincha(name))
+    deporte = ', '.join([''.join(map(str, tupla)) for tupla in deporte])
+    return render_template("informacion-hincha.html", nombre=informacion[0], region=informacion[1], comuna=informacion[2], deporte=deporte, transporte=informacion[3], email=informacion[4], celular=informacion[5])
 
 @app.route("/agregar-artesano", methods=["GET", "POST"])
 def agregar_artesano():
@@ -98,6 +127,11 @@ def informacion_artesanos(artesano_id):
     artesania = ', '.join([''.join(map(str, tupla)) for tupla in artesania])
     fotos = db.obtener_foto(artesano_id)
     return render_template("informacion-artesano.html", nombre_id=artesano_id, nombre=informacion[0], region=informacion[1], comuna=informacion[2], artesania=artesania, foto=fotos, email=informacion[3], celular=informacion[4])
+
+@app.route("/obtener-comunas/<region>")
+def obtener_comunas(region):
+    comunas = db.listar_comunas(db.obtener_id_region(region))
+    return jsonify(list(comunas))
 
 if __name__ == "__main__":
     app.run(debug=True)
