@@ -6,6 +6,8 @@ from app import app
 import re
 from werkzeug.utils import secure_filename
 
+#Validaciones de formulario artesano
+
 def validarFormulario(region, comuna, artesania, descripcion, fotos, nombre, email, celular):
     if validarFotos(fotos) and validarEmail(email) and validarCelular(celular) and validarNombre(nombre) and validarTexto(descripcion) and region is not None and comuna is not None and artesania is not None and len(artesania)>=1 and len(artesania)<=3:
         return True
@@ -68,5 +70,10 @@ def procesarFoto(foto):
 
     return (ruta, new_foto)
 
+#Validaciones de formulario hincha
+
 def validarFormularioHincha(deportes, region, comuna, transporte, nombre, email, celular, comentarios):
-    return True
+    if validarNombre(nombre) and validarEmail(email) and validarCelular(celular) and validarTexto(comentarios) and region is not None and comuna is not None and transporte is not None and deportes is not None and len(deportes) in [1,2,3]:
+        return True
+    else:
+        return False

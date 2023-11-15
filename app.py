@@ -41,13 +41,13 @@ def agregar_hincha():
         return render_template("agregar-hincha.html", deportes=deportes, regiones=regiones)
     elif request.method == "POST":
         deportes = request.form.getlist("deportes")
-        region = request.form["region"]
-        comuna = request.form["comuna"]
-        transporte = request.form["transporte"]
-        nombre = request.form["nombre"]
-        email = request.form["email"]
-        celular = request.form["celular"]
-        comentarios = request.form["comentarios"]
+        region = request.form.get("region", None)
+        comuna = request.form.get("comuna", None)
+        transporte = request.form.get("transporte", None)
+        nombre = request.form.get("nombre", None)
+        email = request.form.get("email", None)
+        celular = request.form.get("celular", None)
+        comentarios = request.form.get("comentarios", None)
 
         if val.validarFormularioHincha(deportes, region, comuna, transporte, nombre, email, celular, comentarios):
             db.agregar_hincha(db.obtener_id_comuna(comuna), transporte, nombre, email, celular, comentarios)
