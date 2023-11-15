@@ -20,7 +20,7 @@ def ver_hinchas():
     for hincha in hin:
         deporte = db.obtener_deportes(db.obtener_id_hincha(hincha[0]))
         deporte = ', '.join([''.join(map(str, tupla)) for tupla in deporte])
-        hinchas.append([hincha[0], hincha[2], deporte, hincha[3], hincha[5]])
+        hinchas.append([hincha[0], hincha[2], deporte, hincha[3], hincha[5], hincha[0].replace(" ", "-")])
     elementos_por_pagina = 5
     pagina = request.args.get('pagina', 1, type=int)
 
@@ -69,7 +69,8 @@ def informacion_hinchas(name):
 @app.route("/agregar-artesano", methods=["GET", "POST"])
 def agregar_artesano():
     if request.method == "GET":
-        return render_template("agregar-artesano.html")
+        regiones = db.listar_regiones()
+        return render_template("agregar-artesano.html", regiones=regiones)
     elif request.method == "POST":
         region = request.form["region"]
         comuna = request.form["comuna"]
@@ -128,10 +129,26 @@ def informacion_artesanos(artesano_id):
     fotos = db.obtener_foto(artesano_id)
     return render_template("informacion-artesano.html", nombre_id=artesano_id, nombre=informacion[0], region=informacion[1], comuna=informacion[2], artesania=artesania, foto=fotos, email=informacion[3], celular=informacion[4])
 
+@app.route("/ver-estadisticas", methods=["GET"])
+def ver_estadisticas():
+    return render_template("ver-estadisticas.html")
+
+#Solicitudes AJAX
+
 @app.route("/obtener-comunas/<region>")
 def obtener_comunas(region):
     comunas = db.listar_comunas(db.obtener_id_region(region))
     return jsonify(list(comunas))
+
+@app.route("/obtener-datos-hinchas")
+def obtener_datos_hichas():
+    datos=db.hinchas_por_deportes()
+    return jsonify(list(datos))
+
+@app.route("/obtener-datos-artesanos")
+def obtener_datos_artesanos():
+    datos=db.artesanos_por_tipo_artesanias()
+    return jsonify(list(datos))
 
 if __name__ == "__main__":
     app.run(debug=True)

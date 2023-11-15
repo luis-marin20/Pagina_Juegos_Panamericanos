@@ -192,3 +192,15 @@ def listar_deportes():
     cursor = connection.cursor()
     cursor.execute(QUERY_DICT['listar_deportes'])
     return cursor.fetchall()
+
+def hinchas_por_deportes():
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['hinchas_por_deportes'])
+    return cursor.fetchall()
+
+def artesanos_por_tipo_artesanias():
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(QUERY_DICT['artesanos_por_tipo_artesanias'])
+    return cursor.fetchall()

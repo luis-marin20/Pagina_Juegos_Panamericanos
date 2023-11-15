@@ -12,7 +12,10 @@
             <label for="region">Region de residencia:</label>
             <select id="region" name="region">
                 <option value="none">---</option>
-                <option value="arica">Región Arica y Parinacota</option>
+                {% for region in regiones %}
+                <option value="{{region[0]}}">{{region[0]}}</option>
+                {% endfor %}
+                <!-- <option value="arica">Región Arica y Parinacota</option>
                 <option value="tarapaca">Región de Tarapaca</option>
                 <option value="antofagasta">Región de Antofagasta</option>
                 <option value="atacama">Región de Atacama</option>
@@ -27,7 +30,7 @@
                 <option value="rios">Región de Los Ríos</option>
                 <option value="lagos">Región de Los Lagos</option>
                 <option value="aysen">Región Aisén del General Carlos Ibáñez del Campo</option>
-                <option value="magallanes">Región de Magallanes y la Antártica Chilena</option>
+                <option value="magallanes">Región de Magallanes y la Antártica Chilena</option> -->
             </select>
         </div>
         <div id="error-region" class="error"></div>
@@ -35,6 +38,7 @@
             <label for="comuna">Comuna de residencia:</label>
             <select id="comuna" name="comuna">
                 <!-- Opciones se agregarán dinámicamente aquí -->
+                <option value="vacio">---</option>
             </select>
         </div>
         <div id="error-comuna" class="error"></div>

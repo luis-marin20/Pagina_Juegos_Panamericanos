@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadisticas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ver-estadisticas.css') }}"/>
+</head>
+<body>
+    <h1>Estas son las estadisticas de los artesanos e hinchas!</h1>
+    <div class="stats-container">
+        <figure class="highcharts-figure">
+            <div id="container-hinchas"></div>
+            <p class="highcharts-description">
+                El anterior grafico presenta el numero total de hinchas registrados por deportes!
+            </p>
+        </figure>
+        <figure class="highcharts-figure">
+            <div id="container-artesanos"></div>
+            <p class="highcharts-description">
+                El anterior grafico presenta el numero total de artesanos registrados por artesanias!
+            </p>
+        </figure>
+    </div>
+    <button class="volver" onclick="redirigir()">Volver</button>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="{{url_for('static', filename='js/ver-estadisticas.js')}}"></script>
+</body>
+</html>

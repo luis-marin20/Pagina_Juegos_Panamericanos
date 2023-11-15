@@ -43,26 +43,33 @@
             {% endfor %}
         </tbody>
     </table>
+    <div class="botonera">
+        <div class="paginacion">
+            {% if pagina_actual > 1 %}
+                <button class="boton" onclick="anterior()">Anterior</button>
+            {% endif %}
 
-    <div class="paginacion">
-        {% if pagina_actual > 1 %}
-            <a href="?pagina={{ pagina_actual - 1 }}">Anterior</a>
-        {% endif %}
-        
-        {% for pagina in range(1, num_paginas + 1) %}
-            <a href="?pagina={{ pagina }}">{{ pagina }}</a>
-        {% endfor %}
-        
-        {% if pagina_actual < num_paginas %}
-            <a href="?pagina={{ pagina_actual + 1 }}">Siguiente</a>
-        {% endif %}
+            <button class="boton" onclick="pagina()">{{ pagina_actual }}</button>
+
+            {% if pagina_actual < num_paginas %}
+                <button class="boton" onclick="siguiente()">Siguiente</button>
+            {% endif %}
+            <button class="boton" onclick="redirigir()">Volver</button>
+        </div>
     </div>
-
-    <button class="volver" onclick="redirigir()">Volver</button>
     
     <script>
         const redirigir = () => {
         window.location.href = "{{url_for('index')}}";
+        }
+        const anterior = () => {
+        window.location.href = "?pagina={{ pagina_actual - 1 }}";
+        }
+        const pagina = () => {
+        window.location.href = `?pagina=${pag}`;
+        }
+        const siguiente = () => {
+        window.location.href = "?pagina={{ pagina_actual + 1 }}";
         }
     </script>
 </body>

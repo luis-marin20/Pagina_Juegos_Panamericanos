@@ -25,7 +25,9 @@
     "obtener_id_deporte": "SELECT id FROM deporte WHERE nombre=%s;",
     "obtener_id_hincha": "SELECT id FROM hincha WHERE nombre=%s;",
     "obtener_deportes": "SELECT D.nombre FROM deporte D, hincha_deporte HD WHERE HD.hincha_id=%s AND HD.deporte_id=D.id;",
-    "informacion_hinchas": "SELECT hincha.nombre, region.nombre, comuna.nombre, hincha.modo_transporte, hincha.email, hincha.celular FROM hincha, comuna, region WHERE hincha.comuna_id=comuna.id AND comuna.region_id=region.id;",
+    "informacion_hinchas": "SELECT hincha.nombre, region.nombre, comuna.nombre, hincha.modo_transporte, hincha.email, hincha.celular FROM hincha, comuna, region WHERE hincha.comuna_id=comuna.id AND comuna.region_id=region.id ORDER BY hincha.id DESC;",
     "info_hincha": "SELECT hincha.nombre, region.nombre, comuna.nombre, hincha.modo_transporte, hincha.email, hincha.celular FROM hincha, comuna, region WHERE hincha.id=%s AND hincha.comuna_id=comuna.id AND comuna.region_id=region.id;",
-    "listar_deportes": "SELECT nombre FROM deporte;"
+    "listar_deportes": "SELECT nombre FROM deporte;",
+    "hinchas_por_deportes": "SELECT D.nombre, COUNT(HD.hincha_id) FROM hincha_deporte HD, deporte D WHERE HD.deporte_id=D.id GROUP BY HD.deporte_id",
+    "artesanos_por_tipo_artesanias": "SELECT T.nombre, COUNT(A.artesano_id) FROM artesano_tipo A, tipo_artesania T WHERE A.tipo_artesania_id=T.id GROUP BY A.tipo_artesania_id"
 }

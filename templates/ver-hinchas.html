@@ -20,7 +20,7 @@
         <tbody>
             {% for hincha in elementos%}
             <tr>
-                <td id="{{hincha[0]}}">
+                <td id="{{hincha[5]}}">
                     <a href="{{url_for('informacion_hinchas', name=hincha[0])}}">{{hincha[0]}}</a>
                 </td>
                 <td>
@@ -40,21 +40,22 @@
         </tbody>
     </table>
 
-    <div class="paginacion">
-        {% if pagina_actual > 1 %}
-            <a href="?pagina={{ pagina_actual - 1 }}">Anterior</a>
-        {% endif %}
-        
-        {% for pagina in range(1, num_paginas + 1) %}
-            <a href="?pagina={{ pagina }}">{{ pagina }}</a>
-        {% endfor %}
-        
-        {% if pagina_actual < num_paginas %}
-            <a href="?pagina={{ pagina_actual + 1 }}">Siguiente</a>
-        {% endif %}
-    </div>
+    <div class="botonera">
+        <div class="paginacion">
+            {% if pagina_actual > 1 %}
+                <button class="boton" onclick="anterior()">Anterior</button>
+            {% endif %}
 
-    <button class="volver" onclick="redirigir()">Volver</button>
+            {% for pagina in range(1, num_paginas + 1) %}
+                <button class="boton" onclick="pagina()">{{ pagina }}</button>
+            {% endfor %}
+
+            {% if pagina_actual < num_paginas %}
+                <button class="boton" onclick="siguiente()">Siguiente</button>
+            {% endif %}
+            <button class="boton" onclick="redirigir()">Volver</button>
+        </div>
+    </div>
 
     <script>
         function redirigir(){

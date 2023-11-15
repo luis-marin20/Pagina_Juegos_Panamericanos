@@ -15,10 +15,10 @@ body {
 
 .tabla {
     text-align: center;
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 20%);
     background-color: rgba(71, 71, 71, 0.7); 
     padding: 20px;
     border: 1px solid #ddd;
@@ -28,7 +28,7 @@ body {
 
 table {
     width: 100%; /* Ancho total de la tabla */
-    height: 70%; /* Altura total de la tabla */
+    height: 80%; /* Altura total de la tabla */
     border-collapse: collapse; /* Colapsar bordes de celdas */
 }
 
@@ -47,7 +47,12 @@ img {
     height: auto; /* Mantener la relación de aspecto */
 }
 
-.volver {
+.botonera {
+    display: flex; /* Utiliza flexbox para colocar los botones uno al lado del otro */
+    justify-content: center; /* Centra los botones horizontalmente */
+}
+
+.boton {
     padding: 10px 20px;
     background-color: #333;
     color: #fff;
@@ -55,9 +60,12 @@ img {
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
+    margin: auto; /* Centra el contenedor horizontalmente */
+    display: inline-block; /* Añade esta línea */
+    margin-top: 120px; /* Espacio superior entre la tabla y el botón */
 }
 
-.volver:hover {
+.boton:hover {
     background-color: #555;
 }
 
