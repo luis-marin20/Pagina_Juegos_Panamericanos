@@ -13,24 +13,8 @@
             <select id="region" name="region">
                 <option value="none">---</option>
                 {% for region in regiones %}
-                <option value="{{region[0]}}">{{region[0]}}</option>
+                <option value="{{region[0]}}">{{region[1]}}</option>
                 {% endfor %}
-                <!-- <option value="arica">Región Arica y Parinacota</option>
-                <option value="tarapaca">Región de Tarapaca</option>
-                <option value="antofagasta">Región de Antofagasta</option>
-                <option value="atacama">Región de Atacama</option>
-                <option value="coquimbo">Región de Coquimbo</option>
-                <option value="valparaiso">Región de Valparaíso</option>
-                <option value="metropolitana">Región Metropolitana de Santiago </option>
-                <option value="ohiggins">Región del Libertador Bernardo Ohiggins</option>
-                <option value="maule">Región del Maule</option>
-                <option value="nuble">Región del Ñuble</option>
-                <option value="biobio">Región del Biobío</option>
-                <option value="araucania">Región de La Araucanía</option>
-                <option value="rios">Región de Los Ríos</option>
-                <option value="lagos">Región de Los Lagos</option>
-                <option value="aysen">Región Aisén del General Carlos Ibáñez del Campo</option>
-                <option value="magallanes">Región de Magallanes y la Antártica Chilena</option> -->
             </select>
         </div>
         <div id="error-region" class="error"></div>

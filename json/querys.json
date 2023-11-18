@@ -17,7 +17,7 @@
     "obtener_id_region": "SELECT id FROM region WHERE nombre=%s;",
     "obtener_id_artesano": "SELECT id FROM artesano WHERE nombre=%s;",
     "informacion_artesano": "SELECT artesano.nombre, region.nombre, comuna.nombre, artesano.email, artesano.celular FROM artesano, comuna, region WHERE artesano.id=%s AND artesano.comuna_id=comuna.id AND comuna.region_id=region.id;",
-    "listar_regiones": "SELECT nombre FROM region;",
+    "listar_regiones": "SELECT id, nombre FROM region;",
     "listar_comunas": "SELECT nombre FROM comuna WHERE region_id=%s;",
     "agregar_hincha": "INSERT INTO hincha (comuna_id, modo_transporte, nombre, email, celular, comentarios) VALUES (%s,%s,%s,%s,%s,%s);",
     "listado_hinchas": "SELECT id, comuna_id, modo_transporte, nombre, email, celular FROM hincha ORDER BY id DESC;",

@@ -135,9 +135,11 @@ def ver_estadisticas():
 
 #Solicitudes AJAX
 
-@app.route("/obtener-comunas/<region>")
-def obtener_comunas(region):
-    comunas = db.listar_comunas(db.obtener_id_region(region))
+@app.route("/obtener-comunas/<region_id>")
+def obtener_comunas(region_id):
+    print(region_id)
+    comunas = db.listar_comunas(region_id)
+    print(comunas)
     return jsonify(list(comunas))
 
 @app.route("/obtener-datos-hinchas")
